@@ -48,6 +48,8 @@ for (const item of itemsToCollect) {
   item.addEventListener("click", handleSelectedItem);
 }
 
+const collectedItems = document.querySelector("input[name=items]");
+
 let selectedItems = [];
 
 function handleSelectedItem(event) {
@@ -66,4 +68,8 @@ if (alreadySelected >= 0) {
     return itemIsDifferent;
   });
   selectedItems = filteredItems;
+} else {
+  selectedItems.push(itemId);
 }
+
+collectedItems.value = selectedItems;

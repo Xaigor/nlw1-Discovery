@@ -5,16 +5,20 @@ server.use(express.static("public"));
 
 // Utilizando template Engine
 const nunjucks = require("nunjucks");
+// Informando em qual pasta estão os HTML's
 nunjucks.configure("src/views", {
   express: server,
   noCache: true,
 });
 
 server.get("/", (req, res) => {
-  res.sendFile(__dirname + "/views/index.html");
+  return res.render(__dirname + "index.html");
 });
 server.get("/create-point", (req, res) => {
-  res.sendFile(__dirname + "/views/create-point.html");
+  return res.render(__dirname + "create-point.html");
+});
+server.get("/search", (req, res) => {
+  return res.render(__dirname + "search-results.html");
 });
 
 server.listen(3000);
